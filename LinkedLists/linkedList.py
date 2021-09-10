@@ -1,3 +1,4 @@
+from typing import List
 from node import Node
 class LinkedList:
     def __init__(self) -> None:
@@ -40,3 +41,15 @@ class LinkedList:
             print(temp.value, end=" -> ")
             temp = temp.next
         print(temp.value, "-> None")
+    
+    def createLinkedList(self,lst: List[int]) -> Node:
+        if lst:
+            for i in range(len(lst)):
+                node = Node(lst[i])
+                if not self.head_node:
+                    self.head_node = node
+                    start = node
+                else:
+                    start.next = node
+                    start = start.next
+        return self.head_node
