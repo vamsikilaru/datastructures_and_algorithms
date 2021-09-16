@@ -1,6 +1,7 @@
 
 # arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
 # ouput max subarray = [4, -1, 2, 1] = 6
+# Kandane Alogithm
 
 def max_subarray(arr):
     local_max = float("-inf")
