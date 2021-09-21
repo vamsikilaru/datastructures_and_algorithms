@@ -1,8 +1,8 @@
 from binaryTreeNode import BinaryTreeNode
 import random
+from collections import deque
 
-class BTFunctions:
-    def insert(self,root : BinaryTreeNode,d: int) -> BinaryTreeNode:
+def insert(root : BinaryTreeNode,d: int) -> BinaryTreeNode:
         node = BinaryTreeNode(d)
         if root is None:
             return node
@@ -19,7 +19,7 @@ class BTFunctions:
             parent.right = node
         return root
 
-    def find_in_bst(self,root:BinaryTreeNode,d) -> BinaryTreeNode:
+def find_in_bst(root:BinaryTreeNode,d) -> BinaryTreeNode:
         tmp = root
         while tmp:
             if d == tmp.data:
@@ -31,52 +31,68 @@ class BTFunctions:
         return None
     
     #find node inorder (BST and BinaryTree)
-    def find_node(self,root:BinaryTreeNode,d) -> BinaryTreeNode:
+def find_node(root:BinaryTreeNode,d) -> BinaryTreeNode:
         if not root:
             return None
         if root.data == d:
             return root
-        tmp = self.find_node(root.left,d)
+        tmp = find_node(root.left,d)
         if tmp:
             return tmp
-        return self.find_node(root.right,d)
+        return find_node(root.right,d)
     
     # print inorder
-    def display_inorder(self,node:BinaryTreeNode):
+def display_inorder(node:BinaryTreeNode):
         if node == None:
             return
-        self.display_inorder(node.left)
+        display_inorder(node.left)
         print(str(node.data), end=", ")
-        self.display_inorder(node.right)
+        display_inorder(node.right)
     
     # create BST
-    def create_bst(self,arr) -> BinaryTreeNode:
+def create_BST(arr) -> BinaryTreeNode:
         root = None
         for x in arr:
-            root = self.insert(root,x)
+            root = insert(root,x)
         return root
     
-    def create_binary_tree(self,count):
+def create_binary_tree(count):
         root = None
         for i in range(1, count):
-            root = self.insert(root, random.randrange(1,100))
+            root = insert(root, random.randrange(1,100))
         return root
 
-    def create_random_BST(self,count):
+def create_random_BST(count):
         root = None
         for i in range(1, count):
-            root = self.insert(root, random.randrange(200, 300))
+            root = insert(root, random.randrange(200, 300))
         return root
         
-    def bst_to_list_rec(self,root, lst):
+def bst_to_list_rec(root, lst):
         if root == None:
             return
 
-        self.bst_to_list_rec(root.left, lst)
+        bst_to_list_rec(root.left, lst)
         lst.append(root.data)
-        self.bst_to_list_rec(root.right, lst)
+        bst_to_list_rec(root.right, lst)
 
-    def bst_to_list(self,root):
+def bst_to_list(root):
         lst = []
-        self.bst_to_list_rec(root, lst)
+        bst_to_list_rec(root, lst)
         return lst
+
+def display_level_order(root):
+  if root == None:
+    return
+  q = deque()
+  q.append(root)
+
+  while q:
+    temp = q.popleft()
+    print(str(temp.data), end = ",")
+    if temp.left != None:
+      q.append(temp.left)
+    if temp.right != None:
+      q.append(temp.right)
+
+  print()
