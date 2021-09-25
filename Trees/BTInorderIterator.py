@@ -35,6 +35,6 @@ def inorder_interator(root: BinaryTreeNode):
             result += str(node.data) + " "
         return result
 
-arr = [25,125,200,300,75,50,12,35,60,75]
+arr = [25,125,200,300,75,50,12,35,60]
 root = bt.create_BST(arr)
 print(inorder_interator(root))
