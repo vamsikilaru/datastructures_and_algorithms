@@ -6,3 +6,7 @@ class BinaryTreeNode:
         self.left = None
         self.right = None
 
+        self.next = None
+        self.parent = None
+        self.count = None
+

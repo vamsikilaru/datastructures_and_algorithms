@@ -95,4 +95,12 @@ def display_level_order(root):
     if temp.right != None:
       q.append(temp.right)
 
-  print()
+def populate_parents_rec(root:BinaryTreeNode,parent):
+    if root == None:
+        return
+    root.parent = parent
+    populate_parents_rec(root.left,root)
+    populate_parents_rec(root.right,root)
+
+def populate_parents(root:BinaryTreeNode):
+    populate_parents_rec(root,None)
