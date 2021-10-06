@@ -6,13 +6,11 @@ def delete_zero_sum_subtree(root:BinaryTreeNode):
     return
   if root.left:
     if root.left.left and root.left.right:
-        print("at left",root.left.data,root.left.left.data,root.left.right.data)
         if root.left.data + root.left.left.data + root.left.right.data ==0:
             root.left = None
     delete_zero_sum_subtree(root.left)
   if root.right:
     if root.right.left and root.right.right:
-        print("at right: ",root.right.data,root.right.left.data,root.right.right.data)
         if root.right.data + root.right.left.data + root.right.right.data ==0:
             root.right = None
     delete_zero_sum_subtree(root.right)
