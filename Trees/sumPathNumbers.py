@@ -6,22 +6,16 @@ class TreeNode:
 
 
 def find_sum_of_path_numbers(root):
-  total_sum = 0
-  # TODO: Write your code here
-  find_paths_rec(root,'',total_sum)
-  return total_sum
+  return find_paths_rec(root,0)
 
-def find_paths_rec(node,current_path,total_sum):
+def find_paths_rec(node,total_sum):
   if not node:
-    return total_sum
-  current_path += str(node.val)
-  if not node.left and not node.right :
-    total_sum = int(current_path)
-  print("total:",total_sum,"curr:",current_path)
-  find_paths_rec(node.left,current_path,total_sum)
-  find_paths_rec(node.right,current_path,total_sum)
-  current_path = current_path[:len(current_path)-2]
-  return total_sum
+    return 0
+  total_sum = 10*total_sum + node.val
+  print(total_sum)
+  if not node.left and not node.right:
+      return total_sum
+  return find_paths_rec(node.left,total_sum) + find_paths_rec(node.right,total_sum)
 
 
 
