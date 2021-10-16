@@ -85,7 +85,7 @@ class Trie:
 keys = ["the", "a", "there", "answer", "any",
         "by", "bye", "their", "abc"]
 
-res = ["Not present in trie", "Present in trie"]
+""" res = ["Not present in trie", "Present in trie"]
 t = Trie()
 print("Keys to insert:\n", keys)
 for words in keys:
@@ -98,4 +98,4 @@ print("abc --- " + res[1] if t.search("abc") else "abc --- " + res[0])
 t.delete("abc")
 print("Deleted key \"abc\" \n")
 
-print("abc --- " + res[1] if t.search("abc") else "abc --- " + res[0])
+print("abc --- " + res[1] if t.search("abc") else "abc --- " + res[0]) """
