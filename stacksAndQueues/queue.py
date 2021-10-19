@@ -19,9 +19,9 @@ class Queue:
     def dequeue(self):
         if self.is_empty():
             return None
-        self.queue_size -=1
-        front = self.front
+        front = self.front()
         self.queue.remove(self.front())
+        self.queue_size -=1
         return front
     def enqueue(self,value):
         self.queue_size +=1
