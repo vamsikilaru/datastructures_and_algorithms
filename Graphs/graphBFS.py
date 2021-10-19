@@ -9,7 +9,7 @@ def bfs(g: Graph,source:int):
     q = Queue()
     q.enqueue(source)
     print("queue size: ",q.size())
-    visited = [None]*g.vertices
+    visited = [False]*g.vertices
     visited[source]= True
     while not q.is_empty():
         vertex = q.dequeue()
