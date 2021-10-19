@@ -4,12 +4,10 @@ path.insert(1,os.path.abspath('./stacksAndQueues'))
 from queue import Queue
 from graph import Graph
 
-def bfs(g: Graph,source:int):
+def bfs_helper(g: Graph,source:int,visited:list):
     result = ''
     q = Queue()
     q.enqueue(source)
-    print("queue size: ",q.size())
-    visited = [False]*g.vertices
     visited[source]= True
     while not q.is_empty():
         vertex = q.dequeue()
@@ -20,7 +18,19 @@ def bfs(g: Graph,source:int):
                 q.enqueue(node.value)
                 visited[node.value] = True
             node = node.next
+    return result,visited
+
+def bfs(g:Graph,source:int):
+    visited = [False]*g.vertices
+    result = ''
+    result,visited = bfs_helper(g,source,visited)
+    for i in range(g.vertices):
+        if not visited[i]:
+            result_new,visited = bfs_helper(g,i,visited)
+            result += result_new
     return result
+        
+
 
 if __name__ == "__main__":
     g = Graph(4)
