@@ -16,6 +16,7 @@ def detect_cycle_rec(g:Graph,node, visited,rec_node_stack):
         return False
     visited[node]=True
     rec_node_stack[node]=True
+    print("1",visited,rec_node_stack)
     head_node = g.array[node].head_node
     while head_node:
         adjacent_node = head_node.value
@@ -23,6 +24,7 @@ def detect_cycle_rec(g:Graph,node, visited,rec_node_stack):
             return True
         head_node = head_node.next
     rec_node_stack[node]= False
+    print("2",visited,rec_node_stack)
     return False
 
 if __name__ == "__main__" :
